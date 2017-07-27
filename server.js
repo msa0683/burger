@@ -22,9 +22,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 var PORT = 8080;
 
 
-
-    "method-override": "^2.3.9",
-
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
 });
