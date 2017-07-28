@@ -15,17 +15,17 @@ router.get("/", function(req, res) {
 	});
 });
 
-router.post("/", function(req, res) {
-	burgers.create([
-		"burger_name"
-	], [
-	req.body.burger_name
-	], function() {
-		res.redirect("/");
-	});
+router.post("/burgers", function(req, res) {
+	burgers.insertOne(
+		[ "burger_name" ], 
+		[ req.body.burger_name], 
+		function() {
+			res.redirect("/");
+		}
+	);
 });
 
-router.put("/:id", function(req, res) {
+router.put("burgers/:id", function(req, res) {
 	var condition= "id =" + req.params.id;
 	console.log("condition", condition);
 
@@ -44,17 +44,3 @@ router.delete("/:id", function(req, res) {
 });
 
 module.exports = router; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router;

@@ -7,21 +7,22 @@ var burgers = {
   selectAll: function(cb) {
     orm.selectAll("burgers", function(res) {
       cb(res);
-    });
-  },
-  // The variables cols and vals are arrays.
-  insertOne: function(cols, vals, cb) {
+      });
+    },
+    // The variables cols and vals are arrays.
+    insertOne: function(cols, vals, cb) {
+      console.log(cols)
     orm.insertOne("burgers", cols, vals, function(res) {
       cb(res);
     });
   },
-  update: function(objColVals, condition, cb) {
-    orm.update("burgers", objColVals, condition, function(res) {
+  updateOne: function(objColVals, condition, cb) {
+    orm.updateOne("burgers", objColVals, condition, function(res) {
       cb(res);
     });
   },
-  updateOne: function(condition, cb) {
-    orm.updateOne("burgers", condition, function(res) {
+  deleteOne: function(condition, cb) {
+    orm.deleteOne("burgers", condition, function(res) {
       cb(res);
     });
   }
@@ -29,5 +30,4 @@ var burgers = {
 
 // Export the database functions for the controller (burgersController.js).
 module.exports = burgers;
-orm.selectAll("burgers", cb)
-burgers.selectAll(cb)
+

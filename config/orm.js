@@ -4,7 +4,7 @@ var connection = require("../config/connection.js");
 function printQquestionMarks(num) {
 	var arr = [];
 
-	for (var i = 0; i < arr.length; i++) {
+	for (var i = 0; i < num; i++) {
 		arr.push("?");
 	}
 	return arr.toString();
@@ -23,32 +23,34 @@ function objToSql(ob) {
 
 
 var orm = {
-	selectAll: function(tableInput cd) {
+	selectAll: function(tableInput,cb) {
 		var queryString = "SELECT * FROM " + tableInput + ";";
     	connection.query(queryString, function(err, result) {
       		if (err) {
         	throw err;
       		}
       		cb(result);
-   		 });
-	};
+   		 })
+	},
 
-	insertOne: function(table, col, val, cb) {
+	insertOne: function(table, cols, vals, cb) {
 		var queryString = "INSERT INTO " + table;
-
+		console.log(vals)
+		console.log(vals.length)
+		console.log(printQquestionMarks(vals.length))
 		queryString += " (";
 		queryString += cols.toString();
 		queryString += ") ";
 		queryString += "VALUES (";
-		queryString + = printQquestionMarks(vals.length);
+		queryString += printQquestionMarks(vals.length);
 		queryString += ")" ;
 
 		console.log(queryString);
 		connection.query(queryString, vals, function(err, res) {
 			if (err) throw err;
-			cb(result);
-		})
-	}
+			cb(res);
+		});
+	},
 
 	updateOne: function(table, objColVals, conditions, cd) {
 		var queryString = "UPDATE " + table;
@@ -63,9 +65,9 @@ var orm = {
 			if (err) throw err
 			cd(result);
 		});
-	};
+	},
 
-	delete: function(table, condition, cb) {
+	deleteOne: function(table, condition, cb) {
     var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;

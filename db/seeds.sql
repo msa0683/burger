@@ -1,2 +1,5 @@
- INSERT INTO burgers (burger_name) VALUES (cheese_burger), (ceaser_burger), (french_burger), (mushroom_burger);
+ INSERT INTO burgers (burger_name, devoured) VALUES ("cheese_burger", false), 
+ 													("ceaser_burger", false), 
+ 													("french_burger", false), 
+ 													("mushroom_burger", false);
 

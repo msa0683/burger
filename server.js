@@ -21,6 +21,10 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 var PORT = 8080;
 
+var routes = require("./controllers/burgers_controller.js");
+app.use("/", routes);
+
+
 
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
