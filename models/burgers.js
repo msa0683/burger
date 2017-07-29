@@ -22,12 +22,6 @@ var burgers = {
         cb(res);
       });
     },
- 
-    deleteOne: function(condition, cb) {
-      orm.deleteOne("burgers", condition, function(res) {
-        cb(res);
-      });
-    }
 };
 
 // Export the database functions for the controller (burgersController.js).

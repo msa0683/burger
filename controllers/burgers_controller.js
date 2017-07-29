@@ -21,25 +21,21 @@ router.post("/burgers", function(req, res) {
 		[ req.body.burger_name], 
 		function(data) {
 			res.redirect("/");
-		});
+		}
+	);
 });
 
-router.put("burgers/:id", function(req, res) {
+router.put("/burgers/:id", function(req, res) {
 	var condition = "id =" + req.params.id;
 	console.log("condition", condition);
 
-	burgers.updateOne({
-	burger_name: req.body.burger_name
-	}, condition, function() {
-		res.redirect("/");
+	burgers.updateOne(
+		{devoured: true}
+		condition, function(data) {
+			res.redirect("/");
+	
 	});
 });
 
-router.deleteOne("/:id", function(req, res) {
-	var condition = "id = " + req.params.id;
-	burgers.deleteOne(condition, function() {
-		res.redirect("/");
-	});
-});
 
 module.exports = router; 
