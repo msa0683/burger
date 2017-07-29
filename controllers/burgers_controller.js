@@ -19,26 +19,25 @@ router.post("/burgers", function(req, res) {
 	burgers.insertOne(
 		[ "burger_name" ], 
 		[ req.body.burger_name], 
-		function() {
+		function(data) {
 			res.redirect("/");
-		}
-	);
+		});
 });
 
 router.put("burgers/:id", function(req, res) {
-	var condition= "id =" + req.params.id;
+	var condition = "id =" + req.params.id;
 	console.log("condition", condition);
 
-	burgers.update({
+	burgers.updateOne({
 	burger_name: req.body.burger_name
 	}, condition, function() {
 		res.redirect("/");
 	});
 });
 
-router.delete("/:id", function(req, res) {
+router.deleteOne("/:id", function(req, res) {
 	var condition = "id = " + req.params.id;
-	burgers.delete(condition, function() {
+	burgers.deleteOne(condition, function() {
 		res.redirect("/");
 	});
 });
