@@ -7,11 +7,9 @@ var router = express.Router();
 
 router.get("/", function(req, res) {
 	burgers.selectAll(function(data) {
-		var hbsObject = {
-			burgers: data
-		};
-		console.log(hbsObject);
-		res.render("index", hbsObject);
+		var burgers_data = data
+		console.log(burgers_data);
+		res.render("index", {burgers_data});
 	});
 });
 
@@ -28,6 +26,7 @@ router.post("/burgers", function(req, res) {
 router.put("/burgers/:id", function(req, res) {
 	var condition = "id = " + req.params.id;
 	console.log("condition", condition);
+	console.log(req)
 
 	burgers.updateOne(
 		{devoured: true},
