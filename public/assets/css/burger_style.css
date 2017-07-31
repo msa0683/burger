@@ -3,18 +3,13 @@ html {
  }
 
  body {
- 	width: 75%;
-	margin: 0 auto; 
-
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-	background-color: white;
+	background-color: yellow;
  }
 
- #cute_burger {
+ #yumburger {
  	display: block;
     margin: auto;
+
  }
 
  h1 {

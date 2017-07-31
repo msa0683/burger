@@ -1,6 +1,6 @@
-var burgers = require("../models/burgers.js");
-
 var express = require("express");
+
+var burgers = require("../models/burgers.js");
 
 var router = express.Router();
 
@@ -26,11 +26,11 @@ router.post("/burgers", function(req, res) {
 });
 
 router.put("/burgers/:id", function(req, res) {
-	var condition = "id =" + req.params.id;
+	var condition = "id = " + req.params.id;
 	console.log("condition", condition);
 
 	burgers.updateOne(
-		{devoured: true}
+		{devoured: true},
 		condition, function(data) {
 			res.redirect("/");
 	
